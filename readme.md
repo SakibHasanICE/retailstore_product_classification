@@ -95,7 +95,6 @@ High Recall Strategy
 ### Hyperparameter Choices
 
 | Hyperparameter | Value | Reason |
-|---|---|---|
 | `epochs` | 100 | Full convergence |
 | `imgsz` | 640 | Standard YOLO input, captures small items |
 | `optimizer` | AdamW | Better generalization than SGD for this task |
@@ -111,13 +110,9 @@ We evaluate the model across a sweep of confidence thresholds `[0.1, 0.15, 0.2, 
 
 ```
 conf=0.10  →  High Recall, Lower Precision
-conf=0.15  →  ✅ Sweet spot (recommended)
+conf=0.15  →  Sweet spot (recommended)
 conf=0.50  →  Low Recall, High Precision (baseline behavior)
 ```
-
----
-
-## Share of Shelf Analytics
 
 ### Concept
 The **entire test dataset** is treated as a single representative store shelf. All product detections across all test images are aggregated.
@@ -143,49 +138,6 @@ Area-weighted share accounts for **pack size** — a large bottle occupies more 
 | `shelf_heatmap.png` | Heatmap of count share, area share & confidence per SKU |
 | `share_of_shelf_analytics.csv` | Full tabular data per SKU |
 
----
-
-## Installation & Setup
-
-### Requirements
-```bash
-pip install ultralytics opencv-python-headless matplotlib seaborn pandas numpy scikit-learn albumentations
-```
-
-Or use the included `requirements.txt`:
-```bash
-pip install -r requirements.txt
-```
-
-### GPU (Recommended)
-Training on GPU is strongly recommended. The notebook auto-detects `device=0` (CUDA GPU). Change to `device='cpu'` if no GPU is available.
-
----
-
-## How to Run
-
-### Option 1: Jupyter Notebook (Recommended)
-```bash
-jupyter notebook retail_os.ipynb
-```
-Run all cells top-to-bottom. The notebook is structured as:
-1. Install & import
-2. Dataset setup & EDA
-3. YOLOv8x training
-4. Threshold sweep evaluation
-5. Test set evaluation
-6. Share of Shelf inference & analytics
-7. Visualizations & summary
-
-### Option 2: JupyterLab
-```bash
-jupyter lab retail_os.ipynb
-```
-
-### Option 3: VS Code
-Open `retail_os.ipynb` in VS Code with the Jupyter extension.
-
----
 
 ## Results & Outputs
 
@@ -193,10 +145,10 @@ Open `retail_os.ipynb` in VS Code with the Jupyter extension.
 
 | Metric | Baseline | After Optimization |
 |---|---|---|
-| **Recall** | 67.6% | **~80–87%** ↑ |
-| **Precision** | — | ≥ 65% |
-| **mAP@50** | — | ↑ |
-| **F1 Score** | — | ↑ |
+| **Recall** | 67.6% | **74.63%** ↑ |
+| **Precision** | — | 55.87% |
+| **mAP@50** | 73.97% |
+| **F1 Score** | 63.90% | 
 
 ### Generated Files
 
