@@ -252,12 +252,5 @@ torch>=2.0.0
 torchvision>=0.15.0
 ```
 
----
 
-## License
 
-This project is for educational/assignment purposes.
-
----
-
-*Built with ❤️ using [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)*
